@@ -22,9 +22,7 @@ class TwisterPlayer(MycroftSkill):
     @intent_file_handler('start.twister.intent')
     def handle_start_twister(self, message):
         self.speak_dialog('start.twister')
-        # os.system("echo 0 > ~/iter.txt")
         open(os.path.join(home, "iter.txt"), "w").write('0')
-
 
     @intent_file_handler('stop.twister.intent')
     def handle_stop_twister(self, message):
@@ -37,11 +35,14 @@ class TwisterPlayer(MycroftSkill):
         iter = int(open(os.path.join(home, "iter.txt"), "r").read())
         action = spin_twister(iter)
         self.speak_dialog('action.twister', {'action': action})
-        os.system("echo %s > ~/last_action.txt" % action)
+        open(os.path.join(home, "last_action.txt"), "w").write(action)
         iter +=1
         open(os.path.join(home, "iter.txt"), "w").write(str(iter))
         
-
+    @intent_file_handler('repeat.twister.intent')
+    def handle_repeat_twister(self, message):
+        last_action =  open(os.path.join(home, "last_action.txt"), "r").read()
+        self.speak_dialog('repeat.twister', {'last_action': last_action})
 
 def create_skill():
     return TwisterPlayer()
