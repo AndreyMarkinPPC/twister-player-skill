@@ -5,16 +5,17 @@ Spins a twister
 Spins a twister and tell the next player what to do
 
 ## Examples
-* "Play twister"
-* "Spin a twister"
-* "Spin twister"
+* "Twister, start game"
+* "Twister, next round"
+* "Twister, last action"
+* "Twister, stop game"
 
 ## Credits
-AndreyMarkinPPC
+Andrey Markin
 
 ## Category
 **Entertainment**
 
 ## Tags
-#Game, play, twister
+#Game #play #twister
 
